@@ -1,0 +1,37 @@
+<?php 
+//   Session, gatekeeper code goes here
+
+/*
+     Uses PHP HTML sticky form setup, embedded PHP snippet
+
+  	 If form not submitted $_GET is undefined so skips code and displays sticky form. 
+
+     Mere file download by URL or click leaves ucid undefined so only sticky Form shown.
+	 
+*/	 
+
+if ( isset ( $_GET["ucid"]  ) )
+{
+	$ucid = $_GET["ucid"];
+	$pass = $_GET["pass"];
+	
+	if  ($ucid == "bert") 
+	{ echo "<br><br>good ucid, redirecting to next block."; 
+      header("refresh:3, url=non-existent.php"); 
+	  exit(); 
+	}
+	
+    else 
+	{ echo "<br><br>Entered  Bad ucid. Sticky form below.<br><br>.";   }
+	
+}
+
+?>
+
+<form action="v-sticky.php">
+    <input type		=   text 	 name = "ucid"    autocomplete = off 
+	       value	=   "<?php  echo $ucid;  ?>"   >  ucid <br><br>
+	<input type		=   text 	 name = "pass"    autocomplete = off 
+	       value	=   "<?php  echo $pass;  ?>"   >  pass <br><br>
+	<input type=submit>
+</form>
